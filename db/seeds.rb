@@ -10,11 +10,14 @@ require 'faker'
 
 puts 'Creating restaurants...'
 
+Restaurant.destroy_all
+
 5.times do
   restaurant = Restaurant.new(
     name: Faker::Restaurant.name,
     address: Faker::Address.full_address,
-    category: Restaurant::CATEGORIES.sample
+    category: Restaurant::CATEGORIES.sample,
+    phone_number: Faker::PhoneNumber.phone_number_with_country_code
   )
   restaurant.save
   puts "...creating #{Faker::Restaurant.name}"
